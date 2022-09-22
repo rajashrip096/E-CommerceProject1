@@ -19,7 +19,7 @@ namespace E_CommerceProject1.Models
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Contact is required")]
-        public int Contact { get; set; }
+        public string Contact { get; set; }
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
     }

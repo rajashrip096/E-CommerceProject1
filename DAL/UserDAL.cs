@@ -23,12 +23,13 @@ namespace E_CommerceProject1.DAL
         }
         public int UserRegister(User user)
         {
-            string qry = "insert into UserData values(@name,@email,@contact,@pass)";
+            string qry = "insert into UserData values(@name,@email,@contact,@pass,@role)";
             cmd = new SqlCommand(qry, con);
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@email", user.Email);
             cmd.Parameters.AddWithValue("@contact", user.Contact);
             cmd.Parameters.AddWithValue("@pass", user.Password);
+            cmd.Parameters.AddWithValue("@role",2);
             con.Open();
             int res = cmd.ExecuteNonQuery();
             con.Close();
@@ -50,7 +51,7 @@ namespace E_CommerceProject1.DAL
                     user.Id = Convert.ToInt32(dr["UserId"]);
                     user.Name = dr["Name"].ToString();
                     user.Email = dr["Email"].ToString();
-                    user.Contact = Convert.ToInt32(dr["Contact"]);
+                    user.Contact = dr["Contact"].ToString();
                     user.Password = dr["Password"].ToString();
                 }
                 con.Close();

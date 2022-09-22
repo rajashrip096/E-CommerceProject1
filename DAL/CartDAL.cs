@@ -44,8 +44,8 @@ namespace E_CommerceProject1.DAL
         public List<Product> ViewProductsFromCart(string userid)
         {
             List<Product> plist = new List<Product>();
-            string qry = "select p.Id,p.Name,p.Price, c.CartId,c.UserId from Product p " +
-                        " inner join Cart c on c.Id = p.Id " +
+            string qry = "select p.ProductId,p.Name,p.Price,p.CategoryId, c.CartId,c.UserId from Product p " +
+                        " inner join Cart c on c.CartId = p.ProductId " +
                         " where c.UserId = @id";
             cmd = new SqlCommand(qry, con);
             cmd.Parameters.AddWithValue("@id", Convert.ToInt32(userid));
@@ -58,9 +58,9 @@ namespace E_CommerceProject1.DAL
                     Product p = new Product();
                     p.ProductId = Convert.ToInt32(dr["ProductId"]);
                     p.Name = dr["Name"].ToString();
-                    p.Price = Convert.ToDouble(dr["Price"]);
-                   // p.CartId = Convert.ToInt32(dr["CartId"]);
-                    p.UserId = Convert.ToInt32(dr["UserId"]);
+                    p.Price = Convert.ToDecimal(dr["Price"]);
+                     p.UserId = Convert.ToInt32(dr["UserId"]);
+                    p.CategoryId = Convert.ToInt32(dr["CategoryId"]);
                     plist.Add(p);
                 }
                 con.Close();

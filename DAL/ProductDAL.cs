@@ -35,7 +35,7 @@ namespace E_CommerceProject1.DAL
                     Product p = new Product();
                     p.ProductId = Convert.ToInt32(dr["ProductId"]);
                     p.Name = dr["Name"].ToString();
-                    p.Price = Convert.ToDouble(dr["Price"]);
+                    p.Price = Convert.ToDecimal(dr["Price"]);
                     p.CategoryId = Convert.ToInt32(dr["CategoryId"]);
                     list.Add(p);
                 }
@@ -64,7 +64,7 @@ namespace E_CommerceProject1.DAL
 
                     p.ProductId = Convert.ToInt32(dr["ProductId"]);
                     p.Name = dr["Name"].ToString();
-                    p.Price = Convert.ToDouble(dr["Price"]);
+                    p.Price = Convert.ToDecimal(dr["Price"]);
                     p.CategoryId = Convert.ToInt32(dr["CategoryId"]);
 
                 }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<E_CommerceProject1.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ViewCart";
 }
 
-<h1>Index</h1>
+<h1>ViewCart</h1>
 
 
 <table class="table">
@@ -19,7 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CategoryId)
             </th>
-            
+            @*<th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -38,9 +40,10 @@
             @*<td>
                 @Html.DisplayFor(modelItem => item.UserId)
             </td>*@
-            <td>
-                @Html.ActionLink("Buy", "AddProductToCart", new {  id=item.ProductId }) 
-                
+          <td>
+                @Html.ActionLink("Remove", "RemoveFromCart", new { cartid=item.ProductId  }) |
+                @*@Html.ActionLink("Order", "PlaceOrder", new { id=item.OrderId })*@ 
+              
             </td>
         </tr>
 }
